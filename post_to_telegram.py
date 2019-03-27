@@ -17,7 +17,7 @@ def get_proxy_urls():
         match = re.search(pattern_for_regex, ip_and_description.contents[0])
         if match is None:
             continue
-        proxy_ips.append('{}:1080'.format(match[0]))
+        proxy_ips.append('socks5://{}:1080/'.format(match[0]))
     return proxy_ips
 
 
@@ -26,7 +26,7 @@ def create_post_on_telegtam(path_to_picture, message_for_posting):
     chat_id = getenv('TELEGRAM_CHAT_ID')
     proxy_urls = get_proxy_urls()
     for proxy_url in proxy_urls:
-        REQUEST_KWARGS= {'proxy_url': 'socks5://{}/'.format(proxy_url)}
+        REQUEST_KWARGS= {'proxy_url': proxy_url}
         try:
             updater = Updater(token, request_kwargs=REQUEST_KWARGS)
             updater.bot.send_message(
