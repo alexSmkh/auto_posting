@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import re
 
 
-def get_proxy():
+def get_proxy_urls():
     url = 'http://spys.one/socks/'
     response = requests.get(url).text
     soup = BeautifulSoup(response, 'lxml')
@@ -24,7 +24,7 @@ def get_proxy():
 def create_post_on_telegtam(path_to_picture, message_for_posting):
     token = getenv('TOKEN_FOR_TELEGRAM')
     chat_id = getenv('TELEGRAM_CHAT_ID')
-    proxy_urls = get_proxy()
+    proxy_urls = get_proxy_urls()
     for proxy_url in proxy_urls:
         REQUEST_KWARGS= {'proxy_url': 'socks5://{}/'.format(proxy_url)}
         try:
