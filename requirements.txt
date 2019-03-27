@@ -1,0 +1,7 @@
+vk-api==11.4.0
+python-dotenv==0.1.0
+python-telegram-bot==11.1.0
+requests==2.21.0
+PySocks==1.6.8
+beautifulsoup4==4.7.1
+lxml==4.3.3
