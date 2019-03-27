@@ -1,6 +1,6 @@
-# Постим комиксы в VK
-* Скрипт скачивает рандомный комикс с сайта https://xkcd.com/  и постит его
-в вашу группу.
+# Репосты для VK, Facebook и Telegram
+Скрипт одновременно создает пост с картинкой в ваших группах (VK, Facebook) и 
+telegram канале. 
 
 ### Как установить 
 * Должен быть установлен `python3`. Затем используйте `pip`(или `pip3`, 
@@ -10,7 +10,7 @@
  ```
  * Для изоляции проекта рекомендуется использовать 
  [virtualenv/venv](https://docs.python.org/3/library/venv.html)
- ##Настройка скрипта для VK
+ ### Настройка скрипта для VK
  Чтобы получить доступ к API VK, необходимо:
  * Узнать id вашей группы ([узнать его можно здесь](http://regvk.com/id/))
  * Получить access_token:
@@ -18,7 +18,7 @@
         [**Мои приложения**](https://vk.com/apps?act=manage). В качестве типа
          приложения следует указать **standalone**
  * В настройках приложения скопируйте **client_id** и поместите в ссылку:
-        https://oauth.vk.com/authorize?client_id=CLIENT_ID&scope=photos,groups,wall,offline&response_type=token
+        https://oauth.vk.com/authorize?client_id=`CLIENT_ID`&scope=photos,groups,wall,offline&response_type=token
  * Вставьте полученную ссылку в адресную строку браузера и перейдите по
         ней 
  * Вы получите access_token — строку наподобие
@@ -33,7 +33,7 @@
  LOGIN_FOR_VK='ваш логин'
 PASSWORD_FOR_VK='ваш пароль'
   ```
-###Настройка скипта для Telegram
+### Настройка скипта для Telegram
 * Вам необходимо создать канал и бота, если те еще не созданы, получите API ключ
 бота. [Как обойти блокировку Telegram](https://bigpicture.ru/?p=913797),
 [Как создать канал, бота и получить токе](https://smmplanner.com/blog/otlozhennyj-posting-v-telegram/)
@@ -42,7 +42,7 @@ PASSWORD_FOR_VK='ваш пароль'
 TOKEN_FOR_TELEGRAM='ваш токен'
 TELEGRAM_CHAT_ID='@ваш_id'
 ```
-###Настройка скрипта для Facebook
+### Настройка скрипта для Facebook
 * Получите API ключ, именуемый в Facebook `маркер доступа пользователя`. 
 C разрешением `publish_to_groups`. [См. руководство](https://developers.facebook.com/docs/graph-api/explorer/)
 * Продлите полученный токен с 2 часов до 2 месяцев. [Ссылка](https://developers.facebook.com/tools/debug/accesstoken/)
@@ -51,7 +51,7 @@ C разрешением `publish_to_groups`. [См. руководство](htt
 ACCESS_TOKEN_FOR_FB='ваш токен'
 FB_GROUP_ID=1234567890
 ```
-###Настройка скрипта перед публикацией
+### Настройка скрипта перед публикацией
 В `.env` запишите полный адрес до картинки, которая должна быть в формате `.png`,
 и сообщение.
 ```txt
