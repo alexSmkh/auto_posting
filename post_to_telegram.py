@@ -11,10 +11,10 @@ def get_proxy_urls():
     response = requests.get(url).text
     soup = BeautifulSoup(response, 'lxml')
     ips_and_descriptions = soup.find_all('font', class_='spy14')
-    pattern_for_regex = '([0-9]{1,3}[\.]){3}[0-9]{1,3}'
+    ip_search_pattern = '([0-9]{1,3}[\.]){3}[0-9]{1,3}'
     proxy_ips = []
     for ip_and_description in ips_and_descriptions:
-        match = re.search(pattern_for_regex, ip_and_description.contents[0])
+        match = re.search(ip_search_pattern, ip_and_description.contents[0])
         if match is None:
             continue
         proxy_ips.append('socks5://{}:1080/'.format(match[0]))
