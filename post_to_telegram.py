@@ -3,6 +3,7 @@ from telegram.ext import Updater
 import requests
 from bs4 import BeautifulSoup
 import re
+from telegram.error import NetworkError
 
 
 def get_proxy_urls():
@@ -38,7 +39,5 @@ def create_post_on_telegtam(path_to_picture, message_for_posting):
                 chat_id=chat_id,
                 photo=open(path_to_picture, 'rb'))
             break
-        except:
+        except NetworkError:
             continue
-
-get_proxy_urls()
