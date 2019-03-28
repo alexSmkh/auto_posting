@@ -28,9 +28,9 @@ def create_post_on_telegtam(path_to_picture, message_for_posting):
     chat_id = getenv('TELEGRAM_CHAT_ID')
     proxy_urls = get_proxy_urls()
     for proxy_url in proxy_urls:
-        REQUEST_KWARGS= {'proxy_url': proxy_url}
+        request_kwargs= {'proxy_url': proxy_url}
         try:
-            updater = Updater(token, request_kwargs=REQUEST_KWARGS)
+            updater = Updater(token, request_kwargs=request_kwargs)
             updater.bot.send_message(
                 chat_id=chat_id,
                 text=message_for_posting)
