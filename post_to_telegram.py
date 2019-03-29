@@ -12,14 +12,14 @@ def get_proxy_urls():
     soup = BeautifulSoup(response, 'lxml')
     ips_and_descriptions = soup.find_all('font', class_='spy14')
     ip_search_pattern = '([0-9]{1,3}[\.]){3}[0-9]{1,3}'
-    match_objects_with_ips = [
+    match_and_nonetype_objects = [
         re.search(ip_search_pattern, ip_and_description.contents[0])
         for ip_and_description in ips_and_descriptions
-        if re.search(ip_search_pattern, ip_and_description.contents[0])
     ]
     proxy_urls = [
         'socks5://{}:1080/'.format(match_object[0])
-        for match_object in match_objects_with_ips
+        for match_object in match_and_nonetype_objects
+        if match_object
     ]
     return proxy_urls
 
