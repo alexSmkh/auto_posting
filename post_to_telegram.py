@@ -35,9 +35,11 @@ def create_post_on_telegtam(path_to_picture, message_for_posting):
             updater.bot.send_message(
                 chat_id=chat_id,
                 text=message_for_posting)
-            updater.bot.send_photo(
-                chat_id=chat_id,
-                photo=open(path_to_picture, 'rb'))
+            with open(path_to_picture, 'rb') as picture:
+                updater.bot.send_photo(
+                    chat_id=chat_id,
+                    photo=picture
+                )
             break
         except NetworkError:
             continue
